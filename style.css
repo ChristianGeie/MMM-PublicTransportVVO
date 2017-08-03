@@ -1,0 +1,60 @@
+.ptbWrapper {
+    position: relative;
+}
+
+.ptbTable {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 1px;
+}
+
+.lineCell {
+    width: 3em;
+    height: 1.25em;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.timeCell {
+    width: 1em;
+}
+
+.directionCell {
+    max-width: 32ch;
+}
+
+.marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.marquee span {
+    display: inline-block;
+    white-space:nowrap;
+    padding-left: 100%;
+    text-indent: 0;
+    animation: marquee 15s linear infinite;
+}
+
+.marqueeStop {
+    animation-play-state: paused
+}
+
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.centeredTd {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.noPadding {
+    padding: 0px;
+}

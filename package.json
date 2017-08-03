@@ -1,0 +1,21 @@
+{
+  "name": "MMM-PublicTransportVVO",
+  "version": "1.0.0",
+  "description": "VVO Public transport module for MagicMirror 2.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianGeie/MMM-PublicTransportVVO"
+  },
+  "keywords": [
+    "magic mirror",
+    "magic mirror 2",
+    "smart mirror",
+    "public transport",
+    "public transport vvo",
+    "public transport dresden",
+    "module"
+  ],
+  "author": "ChristianGeie",
+  "license": "MIT",
+  "homepage": "https://github.com/ChristianGeie/MMM-PublicTransportVVO#readme"
+}
