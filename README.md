@@ -5,11 +5,6 @@ MMM-PublicTransportVVO is a module for the [MagicMirror](https://github.com/Mich
 
 It shows live public transport information for Verkehrsverbund Oberelbe (Germany) based on http://widgets.vvo-online.de api data.
 
-
-*Notes:*
-* *The module is working fine. But I think some value combinations could still lead to strange behaviour. I'd appreciate any error report.*
-* *Fading for departures with delay = 0 is not yet implemented*
-
 You can enter a delay time for "How long does it take to get to my station?".
 Then the module calculates the next reachable departures and draws all unreachable departures in a different style or color.
 
@@ -70,7 +65,7 @@ Multiple instances of this module are possible. Just add another entry of the MM
 
 ## Special Thanks
 
-* [Michael Teeuw](https://github.com/MichMich) for inspiring me and many others to build a MagicMirror.
+* [Michael Teeuw](https://github.com/MichMich) for the great tool and many others to build a MagicMirror.
 * [Bangee44](https://github.com/Bangee44) for creating the [MMM-swisstransport](https://github.com/Bangee44/MMM-swisstransport) module, on which this one is heavily based.
 * The community of [magicmirror.builders](https://magicmirror.builders) for help in the development process.
 
