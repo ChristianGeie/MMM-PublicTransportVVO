@@ -4,10 +4,7 @@ Module.register("MMM-PublicTransportVVO", {
   defaults: {
     name: "MMM-PublicTransportVVO",
     hidden: false,
-    stationId: 33000313,  // [[["Dresden"]],[["Räcknitzhöhe","Dresden","33000313"]]]
-//    stationId: 33000037,
-//    stationId: 33006770,  // [[["Arnsdorf b Dresden"]],[["Bahnhof","Arnsdorf b Dresden","33006770"]]]
-//    stationId: 33000841,   // [[["Dresden"]],[["Scharfensteinstraße","Dresden","33000841"]]]
+    stationId: 33000037,
     baseurl: "http://widgets.vvo-online.de/abfahrtsmonitor/",
     stationuri: "Haltestelle.do?hst=",
     departureuri: "Abfahrten.do?hst=",
@@ -22,9 +19,10 @@ Module.register("MMM-PublicTransportVVO", {
     retryDelay: 2500,                     // if request fails, do a retry after 2.5 sec
 
     marqueeLongDirections: true,
-    delay: 10,                             // How long do you need to walk to the next Station?
+    delay: 10,                            // How long do you need to walk to the next Station?
     showTableHeaders: true,               // show location and station in table header
-    showTableHeadersAsSymbols: false      // table headers as symbols or written?
+    showTableHeadersAsSymbols: false,     // table headers as symbols or written?
+    maxReachableDepartures: 7
   },
 	// create some variables to hold the station name and city based on the API result.
 	fetchedStationCity: "",
