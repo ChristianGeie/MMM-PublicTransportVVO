@@ -1,5 +1,9 @@
 # MMM-PublicTransportVVO
 
+
+- **[MMM-PublicTransportVVO](https://github.com/ChristianGeie/MMM-PublicTransportVVO)** <br> Display live departures from public passenger transport service of the 'Verkehrsverbund Oberelbe' (VVO).
+
+
 MMM-PublicTransportVVO is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project by
 [Michael Teeuw](https://github.com/MichMich).
 
@@ -12,7 +16,7 @@ Then the module calculates the next reachable departures and draws all unreachab
 
 The module looks like this:
 
-![Example for Dresden, Postplatz with default delay](img/MMM-PublicTransportVVO_screenshot.png)
+![Example for Dresden, Postplatz with  delay of 3 minutes](img/MMM-PublicTransportVVO_screenshot.png)
 
 ## Installation
 

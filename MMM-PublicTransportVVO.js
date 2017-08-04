@@ -11,15 +11,12 @@ Module.register("MMM-PublicTransportVVO", {
     colored: false,                       // show not reachable departures colored
     animationSpeed: 1 * 1000,             // 1 sec
     updateInterval: 30 * 1000,            // 30 sec
-
     fade: true,
     fadePoint: 0.25,                      // start on 1/4th of the list.
-
     initialLoadDelay: 0,
     retryDelay: 2500,                     // if request fails, do a retry after 2.5 sec
-
     marqueeLongDirections: true,
-    delay: 10,                            // How long do you need to walk to the next Station?
+    delay: 2,                            // How long do you need to walk to the next Station?
     showTableHeaders: true,               // show location and station in table header
     showTableHeadersAsSymbols: false,     // table headers as symbols or written?
     maxReachableDepartures: 7
@@ -116,7 +113,7 @@ Module.register("MMM-PublicTransportVVO", {
       timeIcon.className = "fa fa-clock-o";
       headerTime.appendChild(timeIcon);
     } else {
-      headerTime.innerHTML = "Abfahrt in min";
+      headerTime.innerHTML = "in min";
     }
 
     headerRow.appendChild(headerTime);
