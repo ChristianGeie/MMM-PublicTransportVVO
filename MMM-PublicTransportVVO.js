@@ -165,6 +165,23 @@ Module.register("MMM-PublicTransportVVO", {
     return wrapper;
   },
 
+  /* getNoDeparturesRow()
+	 * Print row with message, if we have no departures.
+	 *
+	 * argument message - text to display.
+	 */
+  getNoDeparturesRow: function (message) {
+    let row = document.createElement("tr");
+    let cell = document.createElement("td");
+    cell.colSpan = 4;
+
+    cell.innerHTML = message;
+
+    row.appendChild(cell);
+
+    return row;
+  },
+
   getRow: function (current) {
 
     let row = document.createElement("tr");
@@ -237,8 +254,13 @@ Module.register("MMM-PublicTransportVVO", {
     	if (this.readyState === 4) {
 		  	if (this.status === 200) {
 			  	self.processStationDetails(JSON.parse(this.response));
-  			} else {
-				  Log.error(self.name + ": Could not load details.");
+  			} else if (this.status === 401) {
+          self.config.stationId = "";
+          self.updateDom(self.config.animationSpeed);
+          Log.error(self.name + ": Something was wrong.");
+          retry = false;
+        } else {
+          Log.error(self.name + ": Could not load details.");
 			  }
 
   			if (retry) {
