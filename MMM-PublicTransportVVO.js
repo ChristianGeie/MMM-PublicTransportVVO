@@ -4,7 +4,7 @@ Module.register("MMM-PublicTransportVVO", {
   defaults: {
     name: "MMM-PublicTransportVVO",
     hidden: false,
-    stationId: 33000037,
+    stationId: 33006770,
     baseurl: "http://widgets.vvo-online.de/abfahrtsmonitor/",
     stationuri: "Haltestelle.do?hst=",
     departureuri: "Abfahrten.do?hst=",
