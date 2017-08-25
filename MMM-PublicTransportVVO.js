@@ -4,19 +4,19 @@ Module.register("MMM-PublicTransportVVO", {
   defaults: {
     name: "MMM-PublicTransportVVO",
     hidden: false,
-    stationId: 33006770,
+    stationId: 33000037,
     baseurl: "http://widgets.vvo-online.de/abfahrtsmonitor/",
     stationuri: "Haltestelle.do?hst=",
     departureuri: "Abfahrten.do?hst=",
     colored: false,                       // show not reachable departures colored
     animationSpeed: 1 * 1000,             // 1 sec
     updateInterval: 30 * 1000,            // 30 sec
-    fade: true,
+    fade: true,                           // fading out the bottom of the list
     fadePoint: 0.25,                      // start on 1/4th of the list.
-    initialLoadDelay: 0,
+    initialLoadDelay: 0,                  // how long should we wait to load data after starting
     retryDelay: 2500,                     // if request fails, do a retry after 2.5 sec
-    marqueeLongDirections: true,
-    delay: 2,                            // How long do you need to walk to the next Station?
+    marqueeLongDirections: true,          // we want a marquee for long direction strings
+    delay: 2,                             // how long do you need to walk to the next station?
     showTableHeaders: true,               // show location and station in table header
     showTableHeadersAsSymbols: false,     // table headers as symbols or written?
     maxReachableDepartures: 7
@@ -52,7 +52,7 @@ Module.register("MMM-PublicTransportVVO", {
   wrapper.className = "ptbWrapper";
 
 	if (this.config.stationId === "") {
-  	wrapper.innerHTML = "Please set the correct stationID: " + this.name + ".";
+  	wrapper.innerHTML = this.name + ": " + this.translate("NO-STATIONID");
 	 	wrapper.className = "dimmed light small";
 	  return wrapper;
 	}
@@ -85,7 +85,7 @@ Module.register("MMM-PublicTransportVVO", {
       lineIcon.className = "fa fa-tag";
       headerLine.appendChild(lineIcon);
     } else {
-      headerLine.innerHTML = "Linie";
+      headerLine.innerHTML = this.translate("LINE");
     }
 
     headerRow.appendChild(headerLine);
@@ -99,7 +99,7 @@ Module.register("MMM-PublicTransportVVO", {
       directionIcon.className = "fa fa-exchange";
       headerDirection.appendChild(directionIcon);
     } else {
-      headerDirection.innerHTML = "Nach";
+      headerDirection.innerHTML = this.translate("DESTINATION");
     }
 
     headerRow.appendChild(headerDirection);
@@ -113,7 +113,7 @@ Module.register("MMM-PublicTransportVVO", {
       timeIcon.className = "fa fa-clock-o";
       headerTime.appendChild(timeIcon);
     } else {
-      headerTime.innerHTML = "in min";
+      headerTime.innerHTML = this.translate("DEPARTURE");
     }
 
     headerRow.appendChild(headerTime);
@@ -124,12 +124,12 @@ Module.register("MMM-PublicTransportVVO", {
     table.appendChild(tHead);
     }
 
-    // Create table body
+    // create table body
     let tBody = document.createElement("tbody");
 
-    // Handle empty departures array
+    // handle empty departures array
     if (this.departuresArray.length === 0) {
-      let row = this.getNoDeparturesRow("There are currently no departures.");
+      let row = this.getNoDeparturesRow(this.translate("NO-DEPS"));
 
       tBody.appendChild(row);
       table.appendChild(tBody);
@@ -186,33 +186,34 @@ Module.register("MMM-PublicTransportVVO", {
 
     let row = document.createElement("tr");
 
-    // Cell for line
+    // cell for line
     let lineCell = document.createElement("td");
     lineCell.className = "centeredTd noPadding lineCell";
     lineCell.innerHTML = current.departurenumber;
     row.appendChild(lineCell);
 
+    // cell for direction
     let directionCell = document.createElement("td");
     directionCell.className = "directionCell bright";
 
     if (this.config.marqueeLongDirections && current.departuredirection.length >= 26) {
-      directionCell.className = "directionCell marquee";
+      directionCell.className = "directionCell bright marquee";
       let directionSpan = document.createElement("span");
       directionSpan.innerHTML = current.departuredirection;
       directionCell.appendChild(directionSpan);
     } else {
       directionCell.innerHTML = current.departuredirection;
     }
-
     row.appendChild(directionCell);
 
+    // cell for time
     let timeCell = document.createElement("td");
     timeCell.className = "centeredTd timeCell bright";
     if (this.config.delay > 0 && current.departuretime <= this.config.delay && this.config.colored) {
       timeCell.style.color = "red";
     }
     if (current.departuretime === "") {
-      timeCell.innerHTML = "jetzt";
+      timeCell.innerHTML = this.translate("NOW");;
     } else {
       timeCell.innerHTML = current.departuretime;
     }
@@ -350,5 +351,12 @@ Module.register("MMM-PublicTransportVVO", {
 
   getStyles: function () {
     return ['style.css'];
+  },
+
+  getTranslations: function() {
+    return {
+        en: "translations/en.json",
+        de: "translations/de.json"
+    };
   },
 });
