@@ -26,9 +26,18 @@ Just clone the module into your MagicMirror modules folder:
 git clone https://github.com/ChristianGeie/MMM-PublicTransportVVO.git
 ```
 
-## How to get the `stationId`
+## The `stationId`
+
+### How to get it
 
 You will need a `stationId` for your module. *TODO* _Link full list or query target to get station IDs._
+
+### How to verify it
+
+```
+curl http://widgets.vvo-online.de/abfahrtsmonitor/Haltestelle.do?hst=33000037
+```
+returns a array including station name, location and given `stationId`
 
 ## Configuration
 
