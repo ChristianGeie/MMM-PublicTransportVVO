@@ -53,6 +53,7 @@ The module quite configurable. These are the possible options:
 |`delay`|How long does it take you to get from the mirror to the station? The value is given in minutes.<br><br>**Type:** `integer`<br>**Default value:** `10` // 10 minutes|
 |`showTableHeaders`|Show the table headers with information about location and station name.<br><br>**Type:** `boolean`<br>**Default value:** `true`|
 |`showTableHeadersAsSymbols`|Show the table headers as text or symbols.<br><br>**Type:** `boolean`<br>**Default value:** `false`|
+|`TimeOrMinutes`|Show the departure in Timeformat or Minutes.<br><br>**Type:** `string`<br>**Values:** `Time` or `Minutes`<br>**Default value:** `Minutes`|
 
 Here is an example of an entry in `config/config.js`:
 
