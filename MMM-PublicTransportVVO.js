@@ -11,6 +11,7 @@ Module.register("MMM-PublicTransportVVO", {
     colored: false,                       // show not reachable departures colored
     animationSpeed: 1 * 1000,             // 1 sec
     updateInterval: 30 * 1000,            // 30 sec
+    timeorminuteBorder: 15,               // border to show departures in various formats
     fade: true,                           // fading out the bottom of the list
     fadePoint: 0.25,                      // start on 1/4th of the list.
     initialLoadDelay: 0,                  // how long should we wait to load data after starting
@@ -43,6 +44,10 @@ Module.register("MMM-PublicTransportVVO", {
 
     if (this.config.updateInterval < 30000) {
       this.config.updateInterval = 30000;
+    }
+
+    if (this.config.timeorminuteBorder < 1) {
+      this.config.timeorminuteBorder = 1
     }
   },
 
@@ -173,7 +178,7 @@ Module.register("MMM-PublicTransportVVO", {
   getNoDeparturesRow: function (message) {
     let row = document.createElement("tr");
     let cell = document.createElement("td");
-    cell.colSpan = 4;
+    cell.colSpan = 3;
 
     cell.innerHTML = message;
 
@@ -183,6 +188,9 @@ Module.register("MMM-PublicTransportVVO", {
   },
 
   getRow: function (current) {
+
+    let currenttimestamp = new Date();
+    let departuretimestamp = new Date(currenttimestamp.getTime() + (current.departuretime*60*1000));
 
     let row = document.createElement("tr");
 
@@ -214,8 +222,12 @@ Module.register("MMM-PublicTransportVVO", {
     }
     if (current.departuretime === "") {
       timeCell.innerHTML = this.translate("NOW");;
-    } else {
+    } else if (current.departuretime < this.config.timeorminuteBorder) {
       timeCell.innerHTML = current.departuretime;
+    } else {
+      var departuretimeHours = ('0' + departuretimestamp.getHours()).slice(-2);
+      var departuretimeMinutes = ('0' + departuretimestamp.getMinutes()).slice(-2);
+      timeCell.innerHTML = departuretimeHours + ':' + departuretimeMinutes;
     }
     row.appendChild(timeCell);
 

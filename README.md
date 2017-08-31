@@ -22,7 +22,7 @@ The module looks like this:
 
 Just clone the module into your MagicMirror modules folder:
 
-```
+```bash
 git clone https://github.com/ChristianGeie/MMM-PublicTransportVVO.git
 ```
 
@@ -34,7 +34,7 @@ You will need a `stationId` for your module. *TODO* _Link full list or query tar
 
 ### How to verify it
 
-```
+```bash
 curl http://widgets.vvo-online.de/abfahrtsmonitor/Haltestelle.do?hst=33000037
 ```
 returns a array including station name, location and given `stationId`
@@ -49,6 +49,7 @@ The module quite configurable. These are the possible options:
 |`stationId`|The ID of the station. How to get the ID for your station is described below.<br><br>**Type:** `integer`<BR>**Default value:** `33000037`<br> This value is **Required**.|
 |`marqueeLongDirections`|Makes a marquee/ticker text out of all direction descriptions with more than 25 characters. If this value is false, the descriptions are trimmed to the station names. If the movement is not fluent enough for you, you should turn it off.<br><br>**Type:** `boolean`<br>**Default value:** `true`|
 |`updateInterval`|How often the module should be updated. The value is given in milliseconds.<br><br>**Type:** `integer`<br>**Default value:** `30000` // 30 seconds|
+|`timeorminuteBorder`|Departures after this border are displayed in the time format (HH:mm), all others shown simple minutes The value is given in minutes.<br><br>**Type:** `integer`<br>**Default value:** `15`|
 |`hidden`|Visibility of the module.<br><br>**Type:** `boolean`<br>**Default value:** `false`|
 |`delay`|How long does it take you to get from the mirror to the station? The value is given in minutes.<br><br>**Type:** `integer`<br>**Default value:** `10` // 10 minutes|
 |`showTableHeaders`|Show the table headers with information about location and station name.<br><br>**Type:** `boolean`<br>**Default value:** `true`|
