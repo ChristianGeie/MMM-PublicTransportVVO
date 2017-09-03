@@ -3,6 +3,9 @@
   "DESTINATION": "Destination",
   "DEPARTURE": "Departure",
   "NOW": "now",
+  "TIME": "",
+  "MINUTE": "minute",
+  "MINUTES": "minutes",
   "NO-TRAMS": "No connections available",
   "NO-DEPS": "There are currently no departures.",
   "NO-STATIONID": "Please set the correct stationID."

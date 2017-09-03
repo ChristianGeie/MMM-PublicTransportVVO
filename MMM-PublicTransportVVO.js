@@ -11,7 +11,8 @@ Module.register("MMM-PublicTransportVVO", {
     colored: false,                       // show not reachable departures colored
     animationSpeed: 1 * 1000,             // 1 sec
     updateInterval: 30 * 1000,            // 30 sec
-    timeorminuteBorder: 15,               // border to show departures in various formats
+    timeorminuteBorder: 5,               // border to show departures in various formats
+    departuretimeDecoration: true,        // show only plain departure times
     fade: true,                           // fading out the bottom of the list
     fadePoint: 0.25,                      // start on 1/4th of the list.
     initialLoadDelay: 0,                  // how long should we wait to load data after starting
@@ -58,7 +59,7 @@ Module.register("MMM-PublicTransportVVO", {
 
 	if (this.config.stationId === "") {
   	wrapper.innerHTML = this.name + ": " + this.translate("NO-STATIONID");
-	 	wrapper.className = "dimmed light small";
+	 	wrapper.className = "small light dimmed";
 	  return wrapper;
 	}
 
@@ -112,8 +113,9 @@ Module.register("MMM-PublicTransportVVO", {
     // Header Cell for departure time
     let headerTime = document.createElement("td");
 
+    headerTime.className = "centeredTd timeCell";
+
     if (this.config.showTableHeadersAsSymbols) {
-      headerTime.className = "centeredTd";
       let timeIcon = document.createElement("span");
       timeIcon.className = "fa fa-clock-o";
       headerTime.appendChild(timeIcon);
@@ -221,13 +223,23 @@ Module.register("MMM-PublicTransportVVO", {
       timeCell.style.color = "red";
     }
     if (current.departuretime === "") {
-      timeCell.innerHTML = this.translate("NOW");;
+      timeCell.innerHTML = this.translate("NOW");
+    } else if (current.departuretime < this.config.timeorminuteBorder && this.config.departuretimeDecoration) {
+      if (current.departuretime === "1") {
+        timeCell.innerHTML = 'In ' + current.departuretime + ' ' + this.translate("MINUTE");
+      } else {
+        timeCell.innerHTML = 'In ' + current.departuretime + ' ' + this.translate("MINUTES");
+      }
     } else if (current.departuretime < this.config.timeorminuteBorder) {
       timeCell.innerHTML = current.departuretime;
     } else {
       var departuretimeHours = ('0' + departuretimestamp.getHours()).slice(-2);
       var departuretimeMinutes = ('0' + departuretimestamp.getMinutes()).slice(-2);
-      timeCell.innerHTML = departuretimeHours + ':' + departuretimeMinutes;
+      if (this.config.departuretimeDecoration) {
+        timeCell.innerHTML = departuretimeHours + ':' + departuretimeMinutes + ' ' + this.translate("TIME");
+      } else {
+        timeCell.innerHTML = departuretimeHours + ':' + departuretimeMinutes;
+      }
     }
     row.appendChild(timeCell);
 

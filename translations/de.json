@@ -3,6 +3,9 @@
   "DESTINATION": "Richtung",
   "DEPARTURE": "Abfahrt",
   "NOW": "jetzt",
+  "TIME": "Uhr",
+  "MINUTE": "Minute",
+  "MINUTES": "Minuten",
   "NO-TRAMS": "Keine Verbindungen verf&uuml;gbar",
   "NO-DEPS": "Derzeit keine Abfahrten.",
   "NO-STATIONID": "Bitte eine existierende stationID angeben."

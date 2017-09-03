@@ -16,7 +16,7 @@ Then the module calculates the next reachable departures and draws all unreachab
 
 The module looks like this:
 
-![Example for Dresden, Postplatz with  delay of 3 minutes](img/MMM-PublicTransportVVO_screenshot.png)
+![Example for Dresden, Postplatz with  delay of 2 minutes, colored true, 5 minute timeorminuteBorder and departuretimeDecoration is true ](img/MMM-PublicTransportVVO_screenshot.png)
 
 ## Installation
 
@@ -50,6 +50,7 @@ The module quite configurable. These are the possible options:
 |`marqueeLongDirections`|Makes a marquee/ticker text out of all direction descriptions with more than 25 characters. If this value is false, the descriptions are trimmed to the station names. If the movement is not fluent enough for you, you should turn it off.<br><br>**Type:** `boolean`<br>**Default value:** `true`|
 |`updateInterval`|How often the module should be updated. The value is given in milliseconds.<br><br>**Type:** `integer`<br>**Default value:** `30000` // 30 seconds|
 |`timeorminuteBorder`|Departures after this border are displayed in the time format (HH:mm), all others shown simple minutes The value is given in minutes.<br><br>**Type:** `integer`<br>**Default value:** `15`|
+|`departuretimeDecoration`|If you set `timeorminuteBorder` to a value above 1 minute with this value you have the possibility to show arrival time not only plain. <br><br>**Type:** `boolean`<br>**Default value:** `true`|
 |`hidden`|Visibility of the module.<br><br>**Type:** `boolean`<br>**Default value:** `false`|
 |`delay`|How long does it take you to get from the mirror to the station? The value is given in minutes.<br><br>**Type:** `integer`<br>**Default value:** `10` // 10 minutes|
 |`showTableHeaders`|Show the table headers with information about location and station name.<br><br>**Type:** `boolean`<br>**Default value:** `true`|
