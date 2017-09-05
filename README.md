@@ -30,14 +30,22 @@ git clone https://github.com/ChristianGeie/MMM-PublicTransportVVO.git
 
 ### How to get it
 
-You will need a `stationId` for your module. *TODO* _Link full list or query target to get station IDs._
+You will need a `stationId` for your module. Its a little bit tricky to get it. Go to https://www.vvo-online.de/de/fahrplan/haltestellenfahrplan/index.cshtml. Turn on the "Investigation-Mode" in your Browser, so you can see the HTML source code. Put your favorite station name in the input field do a search. After this, do a search in the source code for the same station name. when you find a block like this:
+
+```html
+<select class="select " id="stopid" name="stopid" data-placeholder="Haltestelle" aria-label="Haltestelle" aria-required="true" data-stops-only="true" data-regional-only="true" data-pointstring="33000037|||Postplatz|5658730|4621656|0||" style="display: none;"><option value="33000037"><img style="display:inline" aria-label="Haltestelle" src="/assets/img/trans-icon/ico-stop-15x15.png" data-hoversrc="/assets/img/trans-icon/ico-stop-15x15-h.png" data-src="/assets/img/trans-icon/ico-stop-15x15.png"><span class="clearfix"><strong class="right"></strong><span class="displayname">Postplatz, Dresden</span></span></option></select>
+```
+The important flag is `data-pointstring`. The first integer is our `stationId`, in my example 33000037.
 
 ### How to verify it
 
 ```bash
 curl http://widgets.vvo-online.de/abfahrtsmonitor/Haltestelle.do?hst=33000037
 ```
-returns a array including station name, location and given `stationId`
+returns a array including station name, location and given `stationId` like this
+```
+[[["Dresden"]],[["Postplatz","Dresden","33000037"]]]
+```
 
 ## Configuration
 
