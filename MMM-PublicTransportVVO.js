@@ -11,14 +11,14 @@ Module.register("MMM-PublicTransportVVO", {
     colored: false,                       // show not reachable departures colored
     animationSpeed: 1 * 1000,             // 1 sec
     updateInterval: 30 * 1000,            // 30 sec
-    timeorminuteBorder: 5,               // border to show departures in various formats
+    timeorminuteBorder: 15,               // border to show departures in various formats
     departuretimeDecoration: true,        // show only plain departure times
     fade: true,                           // fading out the bottom of the list
     fadePoint: 0.25,                      // start on 1/4th of the list.
     initialLoadDelay: 0,                  // how long should we wait to load data after starting
     retryDelay: 2500,                     // if request fails, do a retry after 2.5 sec
     marqueeLongDirections: true,          // we want a marquee for long direction strings
-    delay: 2,                             // how long do you need to walk to the next station?
+    delay: 10,                            // how long do you need to walk to the next station?
     showTableHeaders: true,               // show location and station in table header
     showTableHeadersAsSymbols: false,     // table headers as symbols or written?
     maxReachableDepartures: 7
